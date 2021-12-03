@@ -1,0 +1,69 @@
+<template>
+    <lightning-card>
+        <fieldset class="slds-form-element">
+            <legend class="slds-form-element__legend slds-form-element__label">Select Your Mood:</legend>
+            <div class="slds-form-element__control">
+                <div class="slds-visual-picker slds-visual-picker_small">
+                    <input type="radio" id="happy" value="happy" name="faces" onclick={handleClick} />
+                    <label for="happy">
+                        <span class="slds-visual-picker__figure slds-align_absolute-center">
+                            <span class="slds-is-selected">
+                                <span class="slds-icon_container">
+                                    <div class="happyshadow">
+                                        <img src={happyface}> 
+                                    </div>                               
+                                </span>
+                            </span>
+                            <span class="slds-is-not-selected">
+                                <img src={happyface}>
+                            </span>
+                        </span>
+                        <span class="slds-visual-picker__body">
+                            Happy
+                        </span>
+                    </label>
+                </div>
+                <div class="slds-visual-picker slds-visual-picker_small">
+                    <input type="radio" id="neutral" value="neutral" name="faces" onclick={handleClick} />
+                    <label for="neutral">
+                        <span class="slds-visual-picker__figure slds-align_absolute-center">
+                            <span class="slds-is-selected">
+                                <span class="slds-icon_container">
+                                    <div class="neutralshadow">
+                                        <img src={neutralface}> 
+                                    </div>                               
+                                </span>
+                            </span>
+                            <span class="slds-is-not-selected">
+                                <img src={neutralface}>
+                            </span>
+                        </span>
+                        <span class="slds-visual-picker__body">
+                            Neutral
+                        </span>
+                    </label>
+                </div>
+                <div class="slds-visual-picker slds-visual-picker_small">
+                    <input type="radio" id="sad" value="sad" name="faces" onclick={handleClick} />
+                    <label for="sad">
+                        <span class="slds-visual-picker__figure slds-align_absolute-center">
+                            <span class="slds-is-selected">
+                                <span class="slds-icon_container">
+                                    <div class="sadshadow">
+                                        <img src={sadface}> 
+                                    </div>                               
+                                </span>
+                            </span>
+                            <span class="slds-is-not-selected">
+                                <img src={sadface}>
+                            </span>
+                        </span>
+                        <span class="slds-visual-picker__body">
+                            Sad
+                        </span>
+                    </label>
+                </div>
+            </div>
+        </fieldset>
+    </lightning-card>
+</template>

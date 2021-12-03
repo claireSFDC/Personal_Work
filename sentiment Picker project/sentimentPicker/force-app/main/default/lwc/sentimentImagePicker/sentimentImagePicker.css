@@ -1,0 +1,9 @@
+.happyshadow{
+    box-shadow: 10px 10px 5px green;
+}
+.sadshadow{
+    box-shadow: 10px 10px 5px red;
+}
+.neutralshadow{
+    box-shadow: 10px 10px 5px yellow;
+}
