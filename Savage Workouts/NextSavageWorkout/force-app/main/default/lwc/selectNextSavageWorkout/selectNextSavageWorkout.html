@@ -1,0 +1,18 @@
+<template>
+    <p>Hello!</p>
+    <template if:true={nextSavageWorkoutId}>
+        <p>ID: {nextSavageWorkoutId}</p>
+        <lightning-button 
+            variant="brand" 
+            label="Work out!" 
+            title="Next Workout" 
+            class="slds-m-left_x-small">
+        </lightning-button>
+    </template>
+    <template if:true={error}>
+        {error}
+    </template>
+
+    {testword}
+
+</template>
