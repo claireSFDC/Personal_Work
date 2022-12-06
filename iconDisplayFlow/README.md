@@ -2,6 +2,8 @@
 
 This LWC will display a Salesforce Icon in a screen flow.
 <br>You can set the icon type/name, as well as foreground and background colors, if desired!
+<br>![image](https://user-images.githubusercontent.com/62670451/206007598-41c81320-55ea-427f-a808-c37b858a161d.png)
+
 
 ## Icon with no color changes
 
