@@ -20,10 +20,7 @@ export default class IconDisplay extends LightningElement {
     }
 
     initCSSVariables() {
-        var css = this.template.host.style;
-        css.setProperty('--backgroundColor', this.backgroundColor);
-        css.setProperty('--foregroundColor', this.foregroundColor);
+        this.template.querySelector('.my-icon').style.setProperty('--backgroundColor', this.backgroundColor);
+        this.template.querySelector('.my-icon').style.setProperty('--foregroundColor', this.foregroundColor);
     }
-    //CSS function from Force Panda: 
-    //https://forcepanda.wordpress.com/2021/07/27/how-to-dynamically-set-custom-css-properties-in-lwc/
 }
