@@ -20,12 +20,35 @@ Here are some examples!
     <th>formatString</th>
     <th>timeZoneName</th>
     <th>Running User's TimeZone</th>
+    <th>OUTCOME</th>
   </tr>
   <tr>
-    <td>a</td>
-    <td>b</td>
-    <td>c</td>
-    <td>d</td>
+    <td>1/5/2023 5:30pm</td>
+    <td>h:mm a M/d/yyyy</td>
+    <td>'America/Los_Angeles'</td>
+    <td>'America/New_York'</td>
+    <td>2:30 PM 1/5/2023</th>
+  </tr>
+    <tr>
+    <td>9/17/2019 7:15am</td>
+    <td>EEE, d MMM yyyy HH:mm:ss</td>
+    <td>'America/Los_Angeles'</td>
+    <td>'America/New_York'</td>
+    <td>Fri, 17 Sep 2021 04:15:00</th>
+  </tr>
+  <tr>
+    <td>5/6/2009 2:31 PM</td>
+    <td>yyyy-MM-dd HH:mm</td>
+    <td>'America/Los_Angeles'</td>
+    <td>'America/New_York'</td>
+    <td>2009-05-06 11:31</th>
+  </tr>
+    <tr>
+    <td>4/11/2025 1:00 AM</td>
+    <td>yyyy-MM-dd HH:mm</td>
+    <td>'Asia/Kolkata'</td>
+    <td>'America/New_York'</td>
+    <td>11 April 2025 India Standard Time</th>
   </tr>
   </table>
 
