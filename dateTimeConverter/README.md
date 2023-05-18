@@ -4,6 +4,46 @@ Never write a DateTime conversion formula again!
 
 This flow action accepts a DateTime variable, a format string, and a timezone, and returns a String with the DateTime written exactly how you want! No messy formulas needed anymore!
 
+Go from this...
+<code>CASE(WEEKDAY(DATEVALUE({!dateTimeVar} -4/24)),
+1, "Sunday",
+2, "Monday",
+3, "Tuesday",
+4, "Wednesday",
+5, "Thursday",
+6, "Friday",
+7, "Saturday",
+"")
+ & " " &
+CASE(MONTH(DATEVALUE({!dateTimeVar} -4/24 )),
+1, "January",
+2, "February", 
+3, "March",
+4, "April",
+5, "May",
+6, "June", 
+7, "July",
+8, "August",
+9, "September",
+10, "October",
+11, "November",
+12, "December", "")
+& " " &
+TEXT(DAY(DATEVALUE({!dateTimeVar} - 4/24)))
+&", " &
+TEXT(YEAR(DATEVALUE({!dateTimeVar} - 4/24)))
+& " " &
+IF(VALUE(MID(TEXT({!dateTimeVar} - 4/24), 12, 2)) >12, TEXT(VALUE(MID(TEXT({!dateTimeVar} - 4/24), 12, 2)) -12), MID(TEXT({!dateTimeVar} - 4/24), 12, 2))
+& ":"&
+MID(TEXT({!dateTimeVar} - 4/24), 15, 2)
+& " " &
+IF( VALUE(MID(TEXT({!dateTimeVar} - 4/24), 12, 2)) > 11, "PM", "AM")
+  </code>
+  <br>
+To this!
+
+
+
 ## Input Variables
 
 <b>dateTimeVar:</b> This is a standard dateTime variable. It can be defined as a variable in the flow, or you can use a field on a record, like Case.CreatedDate.
