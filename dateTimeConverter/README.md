@@ -5,6 +5,7 @@ Never write a DateTime conversion formula again!
 This flow action accepts a DateTime variable, a format string, and a timezone, and returns a String with the DateTime written exactly how you want! No messy formulas needed anymore!
 
 Go from this...
+
 <code>CASE(WEEKDAY(DATEVALUE({!dateTimeVar} -4/24)),
 1, "Sunday",
 2, "Monday",
@@ -40,8 +41,8 @@ MID(TEXT({!dateTimeVar} - 4/24), 15, 2)
 IF( VALUE(MID(TEXT({!dateTimeVar} - 4/24), 12, 2)) > 11, "PM", "AM")
   </code>
   <br>
-To this!
-
+...to this!<br>
+<img width="399" alt="tothis!" src="https://github.com/claireSFDC/Personal_Work/assets/62670451/2532ff65-fefc-42bb-8640-eeb9d8973414">
 
 
 ## Input Variables
@@ -52,7 +53,7 @@ To this!
 
 ## Examples
 
-Here are some examples!
+Here are some examples of inputs and their respective outputs.
 
 <table>
   <tr>
@@ -91,4 +92,14 @@ Here are some examples!
     <td>11 April 2025 India Standard Time</th>
   </tr>
   </table>
+## Flow Example
+
+1.Create a flow that calls the apex Action, <b>dateTimeConverterController</b>
+<br><img width="200" alt="flowOverView" src="https://github.com/claireSFDC/Personal_Work/assets/62670451/dc00db7f-255d-4229-b150-ecff6687b448">
+<br>
+2. Set the inputs, including the DateTime, the required format, and the timezone.
+<br><img width="600" alt="inputVariables" src="https://github.com/claireSFDC/Personal_Work/assets/62670451/fd2fc887-46a4-4336-b626-690c2943603e">
+<br>
+3. Run the flow, and see the outcome!
+<br><img width="500" alt="resultdatetime" src="https://github.com/claireSFDC/Personal_Work/assets/62670451/82b1f47c-1c36-47dd-9d08-e37f80e1a27d">
 
