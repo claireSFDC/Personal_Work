@@ -109,3 +109,102 @@ Here are some examples of inputs and their respective outputs.
 3. Run the flow, and see the outcome!
 <br><img width="500" alt="resultdatetime" src="https://github.com/claireSFDC/Personal_Work/assets/62670451/82b1f47c-1c36-47dd-9d08-e37f80e1a27d">
 
+## The Code
+
+<pre>
+<code>
+public with sharing class dateTimeConverterController {
+    @InvocableMethod(label='dateTimeConverterController' Description='Takes a DateTime (entered as if in the timezone of the running user) and returns a string in specified format, in specified datetime. If timezone is null, uses the timezone of running user.')
+    public static list<String> dateTimeConverterMethod(List<dateTimeConverter> dateTimeConverterList) {
+        List<String> returnStringList = new List<String>();
+        String returnString  = 'Error';
+        try{
+            String formatter;
+            String timeZoneToUse;
+            DateTime dtToConvert;
+            Timezone userTZ = UserInfo.getTimeZone();
+            String userTimeZone = userTZ.getId();
+            Integer userOffset;
+            dateTimeConverter dateTimeToConvert = dateTimeConverterList[0];
+            
+            //set timezone, format string, and datetime to convert
+            timeZoneToUse = !String.isBlank(dateTimetoConvert.timeZoneName) ? dateTimetoConvert.timeZoneName : userTimeZone;
+            formatter = dateTimetoConvert.formatString;
+            dtToConvert = dateTimeToConvert.dateTimeVar;
+
+            //since dtToConvert is evaluated in GMT, offset this by the difference between running user's time and GMT
+            userOffset = userTZ.getOffset(dtToConvert)/3600000;
+            dtToConvert.addHours(userOffset);
+
+            //get return string!
+            returnString = dtToConvert.format(formatter,timeZoneToUse);
+
+        }catch(DmlException e){
+            returnString = e.getMessage();
+        }
+        
+
+        returnStringList.add(returnString);
+        return returnStringList;
+    }
+
+    public class dateTimeConverter{
+        @AuraEnabled @InvocableVariable public DateTime dateTimeVar;
+        @AuraEnabled @InvocableVariable public String formatString;
+        @AuraEnabled @InvocableVariable public String timeZoneName;
+    }
+}
+</code>
+</pre>
+
+## Test Class
+
+<pre>
+<code>
+@isTest
+public with sharing class dateTimeConverterTest {
+    @IsTest
+    static void testDateTimeConverter(){
+
+        Profile systemadminprofile = [Select id, name from profile where name = 'System Administrator'];
+
+        User newUser = new User(
+            LastName = 'dateTimeConverterTest',
+            username = 'dateTimeConverterTest@sf.com',
+            email = 'dateTimeConverterTest@sf.com.invalid',
+            alias = 'dxtxc',
+            CommunityNickname = 'dateTimeConverterTest',
+            LocaleSidKey = 'en_US',
+            TimeZoneSidKey = 'America/New_York',
+            LanguageLocaleKey = 'en_US',
+            EmailEncodingKey = 'UTF-8',
+            profileid = systemadminprofile.id
+        );
+        insert newUser;
+
+        Test.startTest();
+        System.runAs(newUser){
+            dateTimeConverterController.dateTimeConverter dtToTest = new dateTimeConverterController.dateTimeConverter();
+            List<dateTimeConverterController.dateTimeConverter> dtToTestList = new List<dateTimeConverterController.dateTimeConverter>();
+            List<String> results = new List<String>();
+
+            Datetime myDateTime = Datetime.newInstance(2023, 2, 27, 5, 30, 0);
+
+            dtToTest.dateTimeVar = myDateTime;
+            dtToTest.formatString = 'yyyy-MM-dd h:mm a';
+            dtToTest.timeZoneName = 'America/Los_Angeles';
+            
+            dtToTestList.add(dtToTest);
+            
+            //Test positive
+            results = dateTimeConverterController.dateTimeConverterMethod(dtToTestList);
+            System.assertEquals('2023-02-27 2:30 AM', results[0]);
+         
+
+            Test.stopTest();
+            }
+        
+    }
+}
+</code>
+</pre>
