@@ -1,8 +1,12 @@
 # Salesforce DateTimeConverter Flow Action: Overview
 
-Never write a DateTime conversion formula again!
+<i>Never write a DateTime conversion formula again!</i>
 
 This flow action accepts a DateTime variable, a format string, and a timezone, and returns a String with the DateTime written exactly how you want! No messy formulas needed anymore!
+
+
+<img width="600" alt="exampledatetime" src="https://github.com/claireSFDC/Personal_Work/assets/62670451/0cee6c16-c569-4ba0-ab70-469c628c40b7">
+
 
 Go from this...
 
@@ -42,7 +46,7 @@ IF( VALUE(MID(TEXT({!dateTimeVar} - 4/24), 12, 2)) > 11, "PM", "AM")
   </code>
   <br>
 ...to this!<br>
-<img width="399" alt="tothis!" src="https://github.com/claireSFDC/Personal_Work/assets/62670451/2532ff65-fefc-42bb-8640-eeb9d8973414">
+<img width="600" alt="tothis!" src="https://github.com/claireSFDC/Personal_Work/assets/62670451/2532ff65-fefc-42bb-8640-eeb9d8973414">
 
 
 ## Input Variables
@@ -66,38 +70,40 @@ Here are some examples of inputs and their respective outputs.
   <tr>
     <td>1/5/2023 5:30pm</td>
     <td>h:mm a M/d/yyyy</td>
-    <td>'America/Los_Angeles'</td>
-    <td>'America/New_York'</td>
+    <td>America/Los_Angeles</td>
+    <td>America/New_York</td>
     <td>2:30 PM 1/5/2023</th>
   </tr>
     <tr>
     <td>9/17/2019 7:15am</td>
     <td>EEE, d MMM yyyy HH:mm:ss</td>
-    <td>'America/Los_Angeles'</td>
-    <td>'America/New_York'</td>
+    <td>America/Los_Angeles</td>
+    <td>America/New_York</td>
     <td>Fri, 17 Sep 2021 04:15:00</th>
   </tr>
   <tr>
     <td>5/6/2009 2:31 PM</td>
     <td>yyyy-MM-dd HH:mm</td>
-    <td>'America/Los_Angeles'</td>
-    <td>'America/New_York'</td>
+    <td>America/Los_Angeles</td>
+    <td>America/New_York</td>
     <td>2009-05-06 11:31</th>
   </tr>
     <tr>
     <td>4/11/2025 1:00 AM</td>
     <td>yyyy-MM-dd HH:mm</td>
-    <td>'Asia/Kolkata'</td>
-    <td>'America/New_York'</td>
+    <td>Asia/Kolkata</td>
+    <td>America/New_York</td>
     <td>11 April 2025 India Standard Time</th>
   </tr>
   </table>
+  
+  
 ## Flow Example
 
-1.Create a flow that calls the apex Action, <b>dateTimeConverterController</b>
+1. Create a flow that calls the apex Action, <b>dateTimeConverterController</b>
 <br><img width="200" alt="flowOverView" src="https://github.com/claireSFDC/Personal_Work/assets/62670451/dc00db7f-255d-4229-b150-ecff6687b448">
 <br>
-2. Set the inputs, including the DateTime, the required format, and the timezone.
+2. Set the inputs. (Specified DateTime, the required format, and the timezone.)
 <br><img width="600" alt="inputVariables" src="https://github.com/claireSFDC/Personal_Work/assets/62670451/fd2fc887-46a4-4336-b626-690c2943603e">
 <br>
 3. Run the flow, and see the outcome!
